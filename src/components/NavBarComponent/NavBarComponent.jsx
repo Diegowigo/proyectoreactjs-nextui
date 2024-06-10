@@ -43,7 +43,7 @@ export default function App() {
       <Navbar>
         <NavbarBrand>
           <FontAwesomeIcon icon={faDolly} className="iconStyles" />
-          <p className="font-bold text-inherit">E-commerce Store</p>
+          <p className="font-bold text-inherit">Dolly Store</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>

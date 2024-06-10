@@ -16,7 +16,7 @@ const ItemListContainerComponent = (props) => {
   }, []);
 
   return (
-    <div className="itemListContainer">
+    <div className="itemListContainer pt-4 pr-4 pl-4">
       {products.map((product, id) => (
         <Card
           shadow="sm"
@@ -24,15 +24,8 @@ const ItemListContainerComponent = (props) => {
           isPressable
           onPress={() => console.log("item pressed")}
         >
-          <CardBody className="overflow-visible pt-3">
-            <Image
-              shadow="sm"
-              radius="lg"
-              width="100%"
-              alt={product.title}
-              className="w-full object-cover h-[140px]"
-              src={product.thumbnail}
-            />
+          <CardBody className="overflow-visible pt-3 place-content-center">
+            <Image shadow="sm" alt={product.title} src={product.thumbnail} />
           </CardBody>
           <CardFooter className="text-small justify-between">
             <b>{product.description}</b>
