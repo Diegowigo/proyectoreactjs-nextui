@@ -2,19 +2,9 @@ import React from "react";
 
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 
-import { getAllProducts } from "../../services/productServices";
-
 import "./ItemListContainerComponent.css";
 
-const ItemListContainerComponent = (props) => {
-  const [products, setProducts] = React.useState([]);
-
-  React.useEffect(() => {
-    getAllProducts()
-      .then((res) => setProducts(res.data.products))
-      .catch((error) => console.error(error));
-  }, []);
-
+const ItemListContainerComponent = ({ products }) => {
   return (
     <div className="itemListContainer pt-4 pr-4 pl-4">
       {products.map((product, id) => (
@@ -29,7 +19,6 @@ const ItemListContainerComponent = (props) => {
           </CardBody>
           <CardFooter className="text-small justify-between">
             <b>{product.description}</b>
-            <p className="text-default-500">{product.price}</p>
           </CardFooter>
         </Card>
       ))}

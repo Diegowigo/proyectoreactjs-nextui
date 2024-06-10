@@ -1,20 +1,11 @@
 import React from "react";
 
-import NavBarComponent from "./components/NavBarComponent/NavBarComponent";
-
-import ItemListContainerComponent from "./components/ItemListContainerComponent/ItemListContainerComponent";
+import MainRouter from "./routes/MainRouter";
 
 function App() {
   return (
     <>
-      <nav>
-        <NavBarComponent />
-      </nav>
-      <main>
-        <div>
-          <ItemListContainerComponent greeting={`Bienvenido(a) a Ecommerce!`} />
-        </div>
-      </main>
+      <MainRouter />
     </>
   );
 }

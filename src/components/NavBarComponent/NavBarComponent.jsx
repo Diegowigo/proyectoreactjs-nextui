@@ -1,11 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
@@ -18,7 +18,7 @@ import { faDolly } from "@fortawesome/free-solid-svg-icons";
 
 import CartWidgetComponent from "../CartWidgetComponent/CartWidgetComponent";
 
-export default function App() {
+export default function NavBarComponent() {
   const items = [
     {
       key: "new",
@@ -42,18 +42,20 @@ export default function App() {
     <nav>
       <Navbar>
         <NavbarBrand>
-          <FontAwesomeIcon icon={faDolly} className="iconStyles" />
-          <p className="font-bold text-inherit">Dolly Store</p>
+          <Link to="/" className="font-bold text-inherit">
+            <FontAwesomeIcon icon={faDolly} className="iconStyles" />
+            Dolly Store
+          </Link>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
-            <Link color="foreground" href="#">
-              Features
+            <Link to="/" color="foreground">
+              Home
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
-              Customers
+            <Link to="/item/:id" color="foreground">
+              Item
             </Link>
           </NavbarItem>
           <NavbarItem>

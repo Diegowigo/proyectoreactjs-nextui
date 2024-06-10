@@ -1,14 +1,19 @@
 import React from "react";
 
-import { getAllProducts } from "../../services/productServices";
+import { getAllProducts } from "../services/productServices";
 
-const useProducts = (props) => {
-    const [products, setProducts] = React.useState([]);
-  
-    React.useEffect(() => {
-      getAllProducts()
-        .then((res) => setProducts(res.data.products))
-        .catch((error) => console.error(error));
-    }, []);
+export const useProducts = () => {
+  const [products, setProducts] = React.useState([]);
 
-    export default useProducts
+  React.useEffect(() => {
+    getAllProducts()
+      .then((res) => {
+        setProducts(res.data.products);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  return { products };
+};
