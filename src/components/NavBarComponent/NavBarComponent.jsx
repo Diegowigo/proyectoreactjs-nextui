@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import {
   Navbar,
   NavbarBrand,
@@ -17,26 +16,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDolly } from "@fortawesome/free-solid-svg-icons";
 
 import CartWidgetComponent from "../CartWidgetComponent/CartWidgetComponent";
+import { getAllCategories } from "../../services/productServices";
 
 export default function NavBarComponent() {
-  const items = [
-    {
-      key: "new",
-      label: "New file",
-    },
-    {
-      key: "copy",
-      label: "Copy link",
-    },
-    {
-      key: "edit",
-      label: "Edit file",
-    },
-    {
-      key: "delete",
-      label: "Delete file",
-    },
-  ];
+  const [categories, setCategories] = React.useState([]);
+
+  React.useEffect(() => {
+    getAllCategories()
+      .then((res) => {
+        setCategories(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <nav>
@@ -53,30 +46,23 @@ export default function NavBarComponent() {
               Home
             </Link>
           </NavbarItem>
-          <NavbarItem>
-            <Link to="/item/:id" color="foreground">
-              Item
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Integrations
-            </Link>
-          </NavbarItem>
           <Dropdown>
             <DropdownTrigger>
-              <Button variant="bordered">Open Menu</Button>
+              <Button variant="bordered">Categories</Button>
             </DropdownTrigger>
-            <DropdownMenu aria-label="Dynamic Actions" items={items}>
-              {(item) => (
-                <DropdownItem
-                  key={item.key}
-                  color={item.key === "delete" ? "danger" : "default"}
-                  className={item.key === "delete" ? "text-danger" : ""}
-                >
-                  {item.label}
-                </DropdownItem>
-              )}
+            <DropdownMenu aria-label="Categories">
+              {categories.map((category) => {
+                return (
+                  <DropdownItem key={category.slug}>
+                    <Link
+                      to={`/category/${category.slug}`}
+                      textValue={`Explore ${category.name} products`}
+                    >
+                      {category.name}
+                    </Link>
+                  </DropdownItem>
+                );
+              })}
             </DropdownMenu>
           </Dropdown>
         </NavbarContent>
