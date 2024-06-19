@@ -5,8 +5,7 @@ import { useProductsByCategory } from "../hooks/useProductsByCategory";
 
 const Category = () => {
   const { id } = useParams();
-  const products = useProductsByCategory(id);
-
+  const { products } = useProductsByCategory(id);
   return <ItemListContainerComponent products={products} />;
 };
 

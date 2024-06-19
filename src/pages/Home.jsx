@@ -6,11 +6,7 @@ import { useProducts } from "../hooks/useProducts";
 const Home = () => {
   const { products } = useProducts();
 
-  return (
-    <div>
-      <ItemListContainerComponent products={products} />
-    </div>
-  );
+  return <ItemListContainerComponent products={products} />;
 };
 
 export default Home;

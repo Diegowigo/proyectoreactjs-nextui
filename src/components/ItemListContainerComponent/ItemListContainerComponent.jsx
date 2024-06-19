@@ -1,13 +1,12 @@
 import React from "react";
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
-import "./ItemListContainerComponent.css";
 import { useNavigate } from "react-router-dom";
 
 const ItemListContainerComponent = ({ products }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="itemListContainer pt-4 pr-4 pl-4">
+    <div key="item-list" className="flex-wrap pt-4 pr-4 pl-4">
       {products.map((product, id) => {
         const handlePress = () => {
           navigate(`/item/${product.id}`);

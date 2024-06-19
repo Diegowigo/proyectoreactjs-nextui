@@ -53,10 +53,10 @@ export default function NavBarComponent() {
             <DropdownMenu aria-label="Categories">
               {categories.map((category) => {
                 return (
-                  <DropdownItem key={category.slug}>
+                  <DropdownItem key={category.slug} aria-label={category.name}>
                     <Link
                       to={`/category/${category.slug}`}
-                      textValue={`Explore ${category.name} products`}
+                      aria-label={`Explore ${category.name} products`}
                     >
                       {category.name}
                     </Link>
