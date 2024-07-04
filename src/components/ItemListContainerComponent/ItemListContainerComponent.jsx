@@ -12,9 +12,20 @@ const ItemListContainerComponent = ({ products }) => {
           navigate(`/item/${product.id}`);
         };
         return (
-          <Card shadow="sm" key={id} isPressable onPress={handlePress}>
+          <Card
+            className="max-w-72"
+            shadow="sm"
+            key={id}
+            isPressable
+            onPress={handlePress}
+          >
             <CardBody className="overflow-visible pt-3 place-content-center">
-              <Image shadow="sm" alt={product.title} src={product.thumbnail} />
+              <Image
+                className="max-h-72"
+                shadow="sm"
+                alt={product.title}
+                src={product.thumbnail}
+              />
             </CardBody>
             <CardFooter className="text-small justify-between">
               <b>{product.description}</b>

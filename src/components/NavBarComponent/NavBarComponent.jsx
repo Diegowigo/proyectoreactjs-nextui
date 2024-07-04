@@ -16,20 +16,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDolly } from "@fortawesome/free-solid-svg-icons";
 
 import CartWidgetComponent from "../CartWidgetComponent/CartWidgetComponent";
-import { getAllCategories } from "../../services/productServices";
+import { useCollectionItems } from "../../hooks/useCollectionItems";
 
 export default function NavBarComponent() {
-  const [categories, setCategories] = React.useState([]);
-
-  React.useEffect(() => {
-    getAllCategories()
-      .then((res) => {
-        setCategories(res.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  const { items } = useCollectionItems("category");
 
   return (
     <nav>
@@ -55,7 +45,7 @@ export default function NavBarComponent() {
               </Button>
             </DropdownTrigger>
             <DropdownMenu aria-label="Categories">
-              {categories.map((category) => {
+              {items.map((category) => {
                 return (
                   <DropdownItem key={category.slug} aria-label={category.name}>
                     <Link

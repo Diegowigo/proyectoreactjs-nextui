@@ -1,20 +1,19 @@
 import React from "react";
-import { ring2 } from "ldrs";
-
+import { grid } from "ldrs";
 const LoaderComponent = () => {
-  ring2.register();
+  grid.register();
   return (
     <div
       style={{
         width: "100%",
         height: "50%",
         margin: "auto",
-        color: "black",
         display: "flex",
         justifyContent: "center",
+        paddingTop: "20rem",
       }}
     >
-      <ring2 size="60" speed="1.5" color="black"></ring2>
+      <l-grid size="60" speed="1.5" color="black"></l-grid>
     </div>
   );
 };
