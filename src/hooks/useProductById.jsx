@@ -1,18 +1,23 @@
 import React from "react";
-import { getAllProductsById } from "../services/productServices";
+import { getProductById } from "../services/productServices";
 
 export const useProductById = (id) => {
   const [product, setProduct] = React.useState({});
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
-    getAllProductsById(id)
+    getProductById(id)
       .then((res) => {
         setProduct(res.data);
       })
       .catch((error) => {
-        console.error(error);
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [id]);
 
-  return { product };
+  return { product, loading, error };
 };

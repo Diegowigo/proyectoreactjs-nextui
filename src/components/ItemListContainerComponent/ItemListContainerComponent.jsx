@@ -6,12 +6,11 @@ const ItemListContainerComponent = ({ products }) => {
   const navigate = useNavigate();
 
   return (
-    <div key="item-list" className="flex-wrap pt-4 pr-4 pl-4">
+    <div key="item-list" className="flex-wrap p-4">
       {products.map((product, id) => {
         const handlePress = () => {
           navigate(`/item/${product.id}`);
         };
-
         return (
           <Card shadow="sm" key={id} isPressable onPress={handlePress}>
             <CardBody className="overflow-visible pt-3 place-content-center">

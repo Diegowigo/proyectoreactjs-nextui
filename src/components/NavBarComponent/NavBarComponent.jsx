@@ -43,12 +43,16 @@ export default function NavBarComponent() {
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
             <Link to="/" color="foreground">
-              Home
+              <Button variant="" className="hover:bg-gray-300">
+                Home
+              </Button>
             </Link>
           </NavbarItem>
           <Dropdown>
             <DropdownTrigger>
-              <Button variant="bordered">Categories</Button>
+              <Button variant="" className="hover:bg-gray-300">
+                Categories
+              </Button>
             </DropdownTrigger>
             <DropdownMenu aria-label="Categories">
               {categories.map((category) => {

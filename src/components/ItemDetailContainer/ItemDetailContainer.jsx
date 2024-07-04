@@ -1,10 +1,26 @@
 import React from "react";
+import { CartContext } from "../../context/CartContext";
 
+import { Button } from "@nextui-org/react";
 import "./ItemDetailContainer.css";
+import LoaderComponent from "../LoaderComponent/LoaderComponent";
 
 const ItemDetailContainer = ({ product }) => {
+  const { addToCart, removeFromCart } = React.useContext(CartContext);
+  const [quantity, setQuantity] = React.useState(0);
+
+  const handleAdd = () => {
+    setQuantity(quantity + 1);
+    addToCart(product, 1);
+  };
+
+  const handleRemove = () => {
+    setQuantity(quantity - 1);
+    removeFromCart(product, 1);
+  };
+
   if (!product || !Array.isArray(product.images)) {
-    return <div>Producto no disponible</div>;
+    return <LoaderComponent />;
   }
 
   return (
@@ -20,6 +36,11 @@ const ItemDetailContainer = ({ product }) => {
       <h1 className="product-title">{product.title}</h1>
       <p className="product-description">{product.description}</p>
       <p className="product-price">${product.price}</p>
+      <div>
+        <Button onClick={handleRemove}>-</Button>
+        <span>{quantity}</span>
+        <Button onClick={handleAdd}>+</Button>
+      </div>
     </div>
   );
 };
